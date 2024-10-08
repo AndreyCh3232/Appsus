@@ -1,0 +1,75 @@
+/* NoteTxt Component */
+.note-txt textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* NoteImg Component */
+.note-img img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* NoteVideo Component */
+.note-video video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* NoteAudio Component */
+.note-audio audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* NoteTodos Component */
+.note-todos ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.note-todos li {
+    padding: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.note-todos li:hover {
+    background-color: #f0f0f0;
+}
+
+.note-todos li .done {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.note-todos h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #1d3557;
+}
+
+/* NoteCanvas Component */
+.note-canvas canvas {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* NoteMap Component */
+.note-map iframe {
+    /* border-radius: 10px;
+    border: 1px solid #ddd; */
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}

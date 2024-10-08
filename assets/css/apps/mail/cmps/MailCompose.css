@@ -1,0 +1,130 @@
+.compose-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.compose-btn:hover {
+    background-color: #0056b3;
+}
+
+.mail-compose {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    z-index: 1000;
+}
+
+.compose-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.compose-header h3 {
+    color: #007bff;
+}
+
+.compose-header .close-compose {
+    background: none;
+    border: none;
+    color: #ff3333;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.compose-header .close-compose:hover {
+    color: #cc0000;
+}
+
+.mail-compose input[type="email"],
+.mail-compose input[type="text"],
+.mail-compose textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    resize: none;
+}
+
+.mail-compose input:focus,
+.mail-compose textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.compose-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.compose-actions .send-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.compose-actions .send-btn:hover {
+    background: #218838;
+}
+
+.compose-actions .discard-btn {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.compose-actions .discard-btn:hover {
+    background: #c82333;
+}
+
+@media (max-width: 768px) {
+    .mail-filter {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .mail-folder-list {
+        width: 100%;
+        align-items: center;
+    }
+
+    .mail-list {
+        grid-template-columns: 1fr;
+    }
+
+    .mail-compose {
+        width: 90%;
+    }
+}
