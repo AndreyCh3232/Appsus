@@ -1,72 +1,46 @@
-// import NoteTxt from './NoteTypes/NoteTxt.jsx'
-// import NoteImg from './NoteTypes/NoteImg.jsx'
-// import NoteVideo from './NoteTypes/NoteVideo.jsx'
-// import NoteTodos from './NoteTypes/NoteTodos.jsx'
-// import NoteAudio from './NoteTypes/NoteAudio.jsx'
-// import NoteCanvas from './NoteTypes/NoteCanvas.jsx'
-// import NoteMap from './NoteTypes/NoteMap.jsx'
+const { Link } = ReactRouterDOM;
 
-// const NOTE_COLORS = ['#fffa8b', '#9eff9d', '#b3e5fc', '#ffccf9', '#ffb74d', '#ffcdd2', '#e1bee7', '#c8e6c9', '#ffecb3']
+export function NoteList({ notes, onRemoveNote }) {
 
-// export default function NoteList({ notes, onDeleteNote, onUpdateNote, onDuplicateNote, onPinNote }) {
-//     return (
-//         <div className="note-list">
-//             {notes.map((note) => (
-//                 <NotePreview
-//                     key={note.id}
-//                     note={note}
-//                     onDeleteNote={onDeleteNote}
-//                     onUpdateNote={onUpdateNote}
-//                     onDuplicateNote={onDuplicateNote}
-//                     onPinNote={onPinNote}
-//                 />
-//             ))}
-//         </div>
-//     )
-// }
+    function onEditNote(noteId) {
+        console.log("on edit note", noteId);
+    }
 
-// function NotePreview({ note, onDeleteNote, onUpdateNote, onDuplicateNote, onPinNote }) {
-//     const { type, style = {}, isPinned, id } = note
+    return (
+        <section>
+            <ul className='note-list'>
+                {notes.map(note => (
+                    <li key={note.id}>
+                        <div className="note-content">
+                            {/* Render note image if URL exists */}
+                            {note.info.url && (
+                                <img src={note.info.url} alt="Note image" />
+                            )}
 
-//     const noteStyle = {
-//         ...style,
-//         backgroundColor: getRandomColor()
-//     }
+                            {/* Render title if exists */}
+                            {note.title && <h2>{note.title}</h2>}
 
-//     function getRandomColor() {
-//         const randomIndex = Math.floor(Math.random() * NOTE_COLORS.length)
-//         return NOTE_COLORS[randomIndex]
-//     }
+                            {/* Render text content if exists */}
+                            {note.txt && <h4>{note.txt}</h4>}
+                            {note.info.txt && <span>{note.info.txt}</span>}
 
-//     function getNoteComponent() {
-//         switch (type) {
-//             case 'NoteTxt':
-//                 return <NoteTxt note={note} onChangeInfo={onUpdateNote} />
-//             case 'NoteImg':
-//                 return <NoteImg note={note} onChangeInfo={onUpdateNote} />
-//             case 'NoteVideo':
-//                 return <NoteVideo note={note} onChangeInfo={onUpdateNote} />
-//             case 'NoteTodos':
-//                 return <NoteTodos note={note} onChangeInfo={onUpdateNote} />
-//             case 'NoteAudio':
-//                 return <NoteAudio note={note} onChangeInfo={onUpdateNote} />
-//             case 'NoteCanvas':
-//                 return <NoteCanvas note={note} onChangeInfo={onUpdateNote} />
-//             case 'NoteMap':
-//                 return <NoteMap note={note} onChangeInfo={onUpdateNote} />
-//             default:
-//                 return null
-//         }
-//     }
-
-//     return (
-//         <div className="note-preview" style={noteStyle}>
-//             <div className="pin-note" onClick={() => onPinNote(id)}>{isPinned && '📌'}</div>
-//             {getNoteComponent()}
-//             <div className="note-actions">
-//                 <button onClick={() => onDeleteNote(id)} className="delete-button"> Delete</button>
-//                 <button onClick={() => onDuplicateNote(note)} className="duplicate-button"> Duplicate</button>
-//             </div>
-//         </div>
-//     )
-// }
+                            {/* Handle todos if present */}
+                            {note.info.todos && (
+                                <ul>
+                                    {note.info.todos.map((todo, idx) => (
+                                        <li key={idx}> <input type="checkbox" value={todo.txt}/> {todo.txt} </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                        <div className="btn-actions">
+                            <button onClick={() => onRemoveNote(note.id)}>Delete</button>
+                            <button onClick={() => onEditNote(note.id)}>Edit Note</button>
+                            <button>Share</button>
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+}

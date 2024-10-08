@@ -20,10 +20,14 @@
 @import './cmps/AppHeader.css';
 @import './pages/Home.css';
 @import './pages/About.css';
+
+/* Notes  */
 @import './apps/note/cmps/NoteList.css';
 @import './apps/note/cmps/NoteTypes.css';
 @import './apps/note/cmps/AddNote.css';
 @import './apps/note/cmps/NoteInput.css';
+
+/* Mail */
 @import './apps/mail/cmps/MailFolderList.css';
 @import './apps/mail/cmps/MailCompose.css';
 @import './apps/mail/cmps/MailList.css';
