@@ -9,7 +9,11 @@ const { useEffect, useState } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState([])
-    const [filterBy, setFilterBy] = useState({ status: 'inbox', txt: '', isRead: null })
+    const [filterBy, setFilterBy] = useState({
+        status: 'inbox',
+        txt: '',
+        isRead: null
+    })
     const [isComposing, setIsComposing] = useState(false)
     const [sortBy, setSortBy] = useState({ sortBy: 'date', order: 'asc' })
 
@@ -18,7 +22,10 @@ export function MailIndex() {
     }, [filterBy, sortBy])
 
     function loadMails() {
-        mailService.query(filterBy).then(setMails)
+        mailService.query(filterBy).then((loadedMails) => {
+            console.log('Loaded Mails:', loadedMails)
+            setMails(loadedMails)
+        })
     }
 
     function onSetFilter(newFilter) {
@@ -38,12 +45,22 @@ export function MailIndex() {
         loadMails()
     }
 
+    function handleStarToggle(mailId) {
+        mailService.toggleStar(mailId).then((updatedMail) => {
+            setMails((prevMails) =>
+                prevMails.map((mail) =>
+                    mail.id === mailId ? updatedMail : mail
+                )
+            )
+        })
+    }
+
     return (
         <section className="mail-index">
             <MailFolderList onSetFilter={onSetFilter} onComposeMail={onComposeMail} />
             <div className="mail-content">
                 <MailFilter onSetFilter={onSetFilter} onSetSort={onSetSort} />
-                <MailList mails={mails} />
+                <MailList mails={mails} onStar={handleStarToggle} />
                 {isComposing && <MailCompose onMailSent={onMailSent} />}
             </div>
         </section>

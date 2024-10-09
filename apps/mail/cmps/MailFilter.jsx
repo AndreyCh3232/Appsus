@@ -19,6 +19,7 @@ export default function MailFilter({ onSetFilter, onSetSort }) {
             />
             <select name="status" onChange={handleSortChange}>
                 <option value="inbox">Inbox</option>
+                <option value="stared">Starred</option>
                 <option value="sent">Sent</option>
                 <option value="trash">Trash</option>
                 <option value="draft">Draft</option>

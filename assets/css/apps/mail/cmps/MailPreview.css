@@ -1,0 +1,81 @@
+.mail-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.mail-preview:hover {
+    background-color: #f9f9f9;
+}
+
+.mail-preview.unread {
+    font-weight: bold;
+}
+
+.mail-preview.read {
+    opacity: 0.7;
+}
+
+.mail-preview a {
+    text-decoration: none;
+    color: #333;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.mail-preview h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.mail-preview p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mail-preview span {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.mail-preview button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ff9800;
+    transition: color 0.3s ease;
+}
+
+.mail-preview button:hover {
+    color: #f57c00;
+}
+
+.mail-preview button {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .mail-preview {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mail-preview a {
+        margin-right: 0;
+    }
+
+    .mail-preview button {
+        align-self: flex-end;
+        margin-top: 10px;
+    }
+}

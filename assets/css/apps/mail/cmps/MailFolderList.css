@@ -13,27 +13,25 @@
 
 .folders {
     list-style-type: none;
-    margin-top: 30px;
+    padding: 0;
 }
 
 .folders li {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px;
+    padding: 10px;
     cursor: pointer;
-    border-radius: 8px;
     transition: background-color 0.3s ease;
-    color: #333;
-    font-weight: 500;
+    font-size: 18px;
 }
 
 .folders li i {
-    font-size: 1.5rem;
-    color: #6c757d;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #666;
 }
 
 .folders li:hover {
-    background-color: #e8f1fb;
-    color: #007bff;
+    background-color: #f1f1f1;
+
 }
