@@ -4,6 +4,7 @@ const { useRef } = React
 export function AppHeader() {
     const menuToggleRef = useRef(null)
 
+
     function closeMenu() {
         if (menuToggleRef.current) {
             menuToggleRef.current.checked = false

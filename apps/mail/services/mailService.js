@@ -42,6 +42,7 @@ export const mailService = {
     update,
     toggleStar,
     getLoggedinUser,
+    countStarredMails,
 }
 
 function toggleStar(mailId) {
@@ -55,6 +56,11 @@ function toggleStar(mailId) {
     return Promise.reject('Mail not found')
 }
 
+function countStarredMails() {
+    const mails = _loadMails()
+    return mails.filter(mail => mail.isStared).length
+}
+
 function _loadMails() {
     const mails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultMails
     localStorage.setItem(STORAGE_KEY, JSON.stringify(mails))
@@ -63,12 +69,26 @@ function _loadMails() {
 
 function query(filterBy = {}) {
     const mails = _loadMails()
+
+    // if (filterBy.status) {
+    //     return Promise.resolve(
+    //         mails.filter(mail => getMailStatus(mail) === filterBy.status)
+    //     )
+    // }
+    // return Promise.resolve(mails)
     if (filterBy.status) {
+        if (filterBy.status === 'starred') {
+            // Return only starred mails
+            return Promise.resolve(mails.filter(mail => mail.isStared))
+        }
         return Promise.resolve(
             mails.filter(mail => getMailStatus(mail) === filterBy.status)
         )
     }
-    return Promise.resolve(mails)
+
+    // Return all mails if no status is provided
+    return Promise.resolve(mails);
+
 }
 
 function getById(mailId) {
@@ -102,8 +122,10 @@ function _saveMailsToStorage(mails) {
 }
 
 function update(mailToUpdate) {
+    const mails = _loadMails()
     const idx = mails.findIndex(mail => mail.id === mailToUpdate.id)
     if (idx !== -1) mails[idx] = mailToUpdate
+    _saveMailsToStorage(mails)
     return Promise.resolve(mailToUpdate)
 }
 

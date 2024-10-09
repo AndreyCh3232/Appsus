@@ -16,9 +16,11 @@ export function MailIndex() {
     })
     const [isComposing, setIsComposing] = useState(false)
     const [sortBy, setSortBy] = useState({ sortBy: 'date', order: 'asc' })
+    const [starredCount, setStarredCount] = useState(0)
 
     useEffect(() => {
         loadMails()
+        setStarredCount(mailService.countStarredMails())
     }, [filterBy, sortBy])
 
     function loadMails() {
@@ -46,10 +48,11 @@ export function MailIndex() {
     }
 
     function handleStarToggle(mailId) {
-        mailService.toggleStar(mailId).then((updatedMail) => {
+        mailService.toggleStar(mailId).then(() => {
+            setStarredCount(mailService.countStarredMails())
             setMails((prevMails) =>
                 prevMails.map((mail) =>
-                    mail.id === mailId ? updatedMail : mail
+                    mail.id === mailId ? { ...mail, isStared: !mail.isStared } : mail
                 )
             )
         })
@@ -57,7 +60,7 @@ export function MailIndex() {
 
     return (
         <section className="mail-index">
-            <MailFolderList onSetFilter={onSetFilter} onComposeMail={onComposeMail} />
+            <MailFolderList onSetFilter={onSetFilter} onComposeMail={onComposeMail} starredCount={starredCount} />
             <div className="mail-content">
                 <MailFilter onSetFilter={onSetFilter} onSetSort={onSetSort} />
                 <MailList mails={mails} onStar={handleStarToggle} />
