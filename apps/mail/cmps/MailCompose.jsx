@@ -1,4 +1,4 @@
-
+import { mailService } from "../services/mailService.js";
 
 const { useState } = React
 
@@ -24,7 +24,7 @@ export function MailCompose({ onMailSent }) {
                 isRead: false,
                 isStared: false,
                 labels: [],
-                from: mailService.getLoggedinUser().email,
+                from: "user@appsus.com",
                 sentAt: Date.now(),
             }).then(() => {
                 onMailSent()

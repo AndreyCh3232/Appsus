@@ -1,26 +1,30 @@
 const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
 
-import { AppHeader } from "./cmps/AppHeader.jsx"
-import { About } from "./pages/About.jsx"
-import { Home } from "./pages/Home.jsx"
-import { MailIndex } from "./apps/mail/pages/MailIndex.jsx"
-import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx"
+import { AppHeader } from "./cmps/AppHeader.jsx";
+import { About } from "./pages/About.jsx";
+import { Home } from "./pages/Home.jsx";
+import { MailIndex } from "./apps/mail/pages/MailIndex.jsx";
+import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx";
+import { MailDetails } from "./apps/mail/cmps/MailDetails.jsx";
 import { EditNote } from "./apps/note/pages/EditNote.jsx"
 
 
 export function App() {
-    return <Router>
-        <section className="app">
-            <AppHeader />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/mail" element={<MailIndex />} />
-                <Route path="/note" element={<NoteIndex />} />
-                <Route path="/note/edit" element={<EditNote />} />
+    return (
+        <Router>
+            <section className="app">
+                <AppHeader />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/mail" element={<MailIndex />} />
+                    <Route path="/mail/:mailId" element={<MailDetails />} />
+                    <Route path="/note" element={<NoteIndex />} />
+                    <Route path="/note/edit" element={<EditNote />} />
                 <Route path="/note/edit/:noteId" element={<EditNote />} />
             </Routes>
-        </section>
-    </Router>
+            </section>
+        </Router>
+    )
 }
