@@ -6,7 +6,7 @@ import { About } from "./pages/About.jsx"
 import { Home } from "./pages/Home.jsx"
 import { MailIndex } from "./apps/mail/pages/MailIndex.jsx"
 import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx"
-
+import { EditNote } from "./apps/note/pages/EditNote.jsx"
 
 
 export function App() {
@@ -18,6 +18,8 @@ export function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/mail" element={<MailIndex />} />
                 <Route path="/note" element={<NoteIndex />} />
+                <Route path="/note/edit" element={<EditNote />} />
+                <Route path="/note/edit/:noteId" element={<EditNote />} />
             </Routes>
         </section>
     </Router>

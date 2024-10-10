@@ -11,10 +11,7 @@ export const noteService = {
     save,
     getEmptyNote,
     getDefaultFilter,
-    getFilterFromSearchParams,
-    getSpeedStats,
-    getVendorStats,
-    createNote
+    getEmptyNoteForEdit
 }
 // For Debug (easy access from console):
 window.cs = noteService
@@ -59,8 +56,23 @@ function save(note) {
     }
 }
 
-function getEmptyNote(vendor = '', maxSpeed = '') {
+function getEmptyNote(title = '', maxSpeed = '') {
     return { vendor, maxSpeed }
+}
+function getEmptyNoteForEdit({id, createdAt, type = '', isPinned = false, title = '', info = {} } = {}, style = {} = {}) {
+    return {
+        id,
+        createdAt,
+        type,
+        isPinned,
+        title,
+        info: {
+            txt: info.txt || '',
+            todos: info.todos || [],
+            url: info.url || ''
+        },
+        style
+    }
 }
 
 function getDefaultFilter() {
@@ -167,7 +179,6 @@ function _createNotes() {
             type: '',
             isPinned: false,
             info: {
-                url: './assets/img/view.jpg'
             }
         },
         {
@@ -176,7 +187,6 @@ function _createNotes() {
             type: '',
             isPinned: false,
             info: {
-                url: '../assets/img/view.jpg',
                 txt: 'lor ipusomxDlorem ipusomxD'
             }
         },
@@ -213,7 +223,6 @@ function _createNotes() {
             type: '',
             isPinned: false,
             info: {
-                url: 'http://youtube.mp4',
                 txt: 'lorem ipusomxDlorem ipusomxDlorem'
             }
         },
@@ -244,7 +253,7 @@ function _createNote_test(title = '', type = '', isPinned = false, { txt = '', u
     }
 }
 
-function createNote({ type = 'text', isPinned = false, title = '', info = {} } = {}, style = {} = {}) {
+function createNote({ type = '', isPinned = false, title = '', info = {} } = {}, style = {} = {}) {
     return {
         id: utilService.makeId(),
         createdAt: Date.now(),

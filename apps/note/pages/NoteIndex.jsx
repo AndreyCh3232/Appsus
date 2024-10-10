@@ -23,6 +23,7 @@ export function NoteIndex() {
     }, [])
 
     function onRemoveNote(noteId) {
+        if (!confirm('Are you sure you want to delete?')) return alert ('Delete Cancelled') 
         noteService.remove(noteId)
             .then(() => {
                 setNotes(prevNotes => prevNotes.filter(note => note.id !== noteId))
@@ -34,14 +35,10 @@ export function NoteIndex() {
             })
     }
 
-    var note = noteService.createNote('new title')
-    console.log("Created new note using func",note)
-    
-
     if (!notes) return <div>Loading...</div>
 
     return <section>
-            <NoteList notes={notes} onRemoveNote={onRemoveNote}></NoteList>
-            <Link to="/note/edit"> Add Note</Link>
+        <NoteList notes={notes} onRemoveNote={onRemoveNote}></NoteList>
+        <Link to="/note/edit"> Add Note</Link>
     </section>
 }

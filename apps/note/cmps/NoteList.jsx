@@ -2,10 +2,6 @@ const { Link } = ReactRouterDOM;
 
 export function NoteList({ notes, onRemoveNote }) {
 
-    function onEditNote(noteId) {
-        console.log("on edit note", noteId);
-    }
-
     return (
         <section>
             <ul className='note-list'>
@@ -28,14 +24,16 @@ export function NoteList({ notes, onRemoveNote }) {
                             {note.info.todos && (
                                 <ul>
                                     {note.info.todos.map((todo, idx) => (
-                                        <li key={idx}> <input type="checkbox" value={todo.txt}/> {todo.txt} </li>
+                                        <li key={idx}> <input type="checkbox" value={todo.txt} /> {todo.txt} </li>
                                     ))}
                                 </ul>
                             )}
                         </div>
                         <div className="btn-actions">
                             <button onClick={() => onRemoveNote(note.id)}>Delete</button>
-                            <button onClick={() => onEditNote(note.id)}>Edit Note</button>
+                            <button onClick={() => onEditNote(note.id)}>
+                            <Link to={`/note/edit/${note.id}`}> Edit Note</Link>
+                            </button>
                             <button>Share</button>
                         </div>
                     </li>
