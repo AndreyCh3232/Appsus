@@ -1,0 +1,22 @@
+
+.search-bar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border-radius: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    font-size: 16px;
+    border: 1px solid  rgba(0, 0, 0, 0.5);
+  }
+  
+  input {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    padding: 8px;
+}

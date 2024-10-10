@@ -8,6 +8,7 @@ import { MailIndex } from "./apps/mail/pages/MailIndex.jsx";
 import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx";
 import { MailDetails } from "./apps/mail/cmps/MailDetails.jsx";
 import { EditNote } from "./apps/note/pages/EditNote.jsx"
+import {NoteFilter} from "./apps/note/cmps/NoteFilter.jsx"
 
 
 export function App() {

@@ -1,6 +1,7 @@
 import { noteService } from '../../note/services/note.services.js'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { EditNote } from './EditNote.jsx'
 const { Link, useSearchParams } = ReactRouterDOM
 
@@ -23,7 +24,7 @@ export function NoteIndex() {
     }, [])
 
     function onRemoveNote(noteId) {
-        if (!confirm('Are you sure you want to delete?')) return alert ('Delete Cancelled') 
+        if (!confirm('Are you sure you want to delete?')) return alert('Delete Cancelled')
         noteService.remove(noteId)
             .then(() => {
                 setNotes(prevNotes => prevNotes.filter(note => note.id !== noteId))
@@ -37,8 +38,10 @@ export function NoteIndex() {
 
     if (!notes) return <div>Loading...</div>
 
-    return <section>
+    return <section className="note-index flex column">
+        <NoteFilter></NoteFilter>
+        <EditNote> </EditNote>
+        {/* <Link to="/note/edit"> Add Note</Link> */}
         <NoteList notes={notes} onRemoveNote={onRemoveNote}></NoteList>
-        <Link to="/note/edit"> Add Note</Link>
     </section>
 }

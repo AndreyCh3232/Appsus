@@ -59,7 +59,7 @@ function save(note) {
 function getEmptyNote(title = '', maxSpeed = '') {
     return { vendor, maxSpeed }
 }
-function getEmptyNoteForEdit({id, createdAt, type = '', isPinned = false, title = '', info = {} } = {}, style = {} = {}) {
+function getEmptyNoteForEdit({ id, createdAt, type = '', isPinned = false, title = '', info = {} } = {}, style = {} = {}) {
     return {
         id,
         createdAt,
@@ -142,7 +142,7 @@ function _createNotes() {
                 backgroundColor: '#00d'
             },
             info: {
-                txt: 'Fullstack Me Baby!'
+                url: './assets/img/temple.jpg'
             }
         },
         {
@@ -152,9 +152,8 @@ function _createNotes() {
             isPinned: false,
             title: 'here is a title',
             info: {
-                title: 'Bobi and Me',
-                txt: 'I have img url and title lorem ipusomxDlorem ipusomxDlorem ipusomxD',
-            },
+                url: './assets/img/view1.jpg'
+              },
             style: {
                 backgroundColor: '#00d'
             }
@@ -179,62 +178,63 @@ function _createNotes() {
             type: '',
             isPinned: false,
             info: {
+                url: './assets/img/view.jpg'
             }
-        },
-        {
-            id: 'n105',
-            createdAt: 1112224,
-            type: '',
-            isPinned: false,
-            info: {
-                txt: 'lor ipusomxDlorem ipusomxD'
-            }
-        },
-        {
-            id: 'n106',
-            createdAt: 1112224,
-            type: '',
-            isPinned: false,
-            info: {
-                url: './assets/img/honda.jpg'
-            }
-        },
-        {
-            id: 'n107',
-            createdAt: 1112224,
-            type: '',
-            isPinned: false,
-            info: {
-                txt: 'lorem ipusomxDlorem ipusomxDlorem ipusomxDlorem ipusomxD'
-            }
-        },
-        {
-            id: 'n108',
-            createdAt: 1112224,
-            type: '',
-            isPinned: false,
-            info: {
-                txt: 'lorem ipusomxDlorem ipusomxDlorem ipusomxDlorem ipusomxD'
-            }
-        },
-        {
-            id: 'n109',
-            createdAt: 1112224,
-            type: '',
-            isPinned: false,
-            info: {
-                txt: 'lorem ipusomxDlorem ipusomxDlorem'
-            }
-        },
-        {
-            id: 'n110',
-            createdAt: 1112224,
-            type: '',
-            isPinned: false,
-            info: {
-                txt: 'lorem ipusomxDlorem ipusomxDlorem ipusomxDlorem ipusomxD'
-            }
-        },
+        }
+        // {
+        //     id: 'n105',
+        //     createdAt: 1112224,
+        //     type: '',
+        //     isPinned: false,
+        //     info: {
+        //         txt: 'lor ipusomxDlorem ipusomxD'
+        //     }
+        // },
+        // {
+        //     id: 'n106',
+        //     createdAt: 1112224,
+        //     type: '',
+        //     isPinned: false,
+        //     info: {
+        //         url: './assets/img/honda.jpg'
+        //     }
+        // },
+        // {
+        //     id: 'n107',
+        //     createdAt: 1112224,
+        //     type: '',
+        //     isPinned: false,
+        //     info: {
+        //         txt: 'lorem ipusomxDlorem ipusomxDlorem ipusomxDlorem ipusomxD'
+        //     }
+        // },
+        // {
+        //     id: 'n108',
+        //     createdAt: 1112224,
+        //     type: '',
+        //     isPinned: false,
+        //     info: {
+        //         txt: 'lorem ipusomxDlorem ipusomxDlorem ipusomxDlorem ipusomxD'
+        //     }
+        // },
+        // {
+        //     id: 'n109',
+        //     createdAt: 1112224,
+        //     type: '',
+        //     isPinned: false,
+        //     info: {
+        //         txt: 'lorem ipusomxDlorem ipusomxDlorem'
+        //     }
+        // },
+        // {
+        //     id: 'n110',
+        //     createdAt: 1112224,
+        //     type: '',
+        //     isPinned: false,
+        //     info: {
+        //         txt: 'lorem ipusomxDlorem ipusomxDlorem ipusomxDlorem ipusomxD'
+        //     }
+        // },
 
     ]
     return utilService.saveToStorage(NOTE_KEY, notes)

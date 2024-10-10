@@ -1,74 +1,98 @@
-.add-note {
-    margin: 20px;
-    padding: 20px;
-}
-
-.add-note-container {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #fff;
+/* General styling */
+.note-editor {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+  }
+  
+  .note-editor-container {
+    padding: 16px;
+  }
+  
+  .note-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.note-title-input {
-    background-color: #444;
+    gap: 12px;
+  }
+  
+  /* Input styling */
+  .note-input {
     border: none;
-    padding: 10px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 1rem;
     outline: none;
-}
-
-.note-content-input {
-    background-color: #444;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 1rem;
-    resize: vertical;
-    height: 80px;
-    outline: none;
-}
-
-.note-type-icons {
+    font-size: 16px;
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .note-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .note-text {
+    font-size: 16px;
+  }
+  .btn-save{
+    width: 20%;
+  }
+  
+  .note-input::placeholder {
+    color: #757575;
+  }
+  
+  .note-input:focus {
+    border-bottom: 2px solid #f1c40f;
+  }
+  
+  /* Icon row styling */
+  .note-icons {
     display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-}
-
-.note-type-icons button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
+    gap: 12px;
+    color: #757575;
+    margin-top: 8px;
+  }
+  
+  .material-icons {
     cursor: pointer;
+    font-size: 24px;
+    color: #757575;
+    transition: color 0.2s ease;
+  }
+  
+  .material-icons:hover {
+    color: #000;
+  }
+  
+  /* Footer icons styling (initially hidden) */
+  .note-footer {
+    display: none;
+    padding: 8px 0;
+  }
+  
+  .note-form:focus-within .note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .note-footer-icons {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .note-footer-icons .material-icons {
     font-size: 20px;
-    transition: color 0.3s, transform 0.2s;
-}
-
-.note-type-icons button:hover {
-    color: #ffb703;
-    transform: scale(1.1);
-}
-
-.add-note-button {
-    align-self: flex-end;
-    background-color: #457b9d;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.add-note-button:hover {
-    background-color: #ffb703;
-    transform: scale(1.05);
-}
+    color: #757575;
+  }
+  
+  /* Responsive behavior */
+  @media (max-width: 600px) {
+    .note-editor {
+      max-width: 100%;
+    }
+  }
+  

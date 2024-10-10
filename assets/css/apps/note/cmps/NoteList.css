@@ -1,89 +1,23 @@
-/* ul.note-list {
-    column-count: 4;
-    column-gap: 10px;
-    margin: 20px;
-    padding-inline-end: 20px;
-}
-
-.note-list li {
-    break-inside: avoid;
-    list-style: none;
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin: 10px;
-    margin-block-end: 5px;
-    border: 1px solid white;
-    border: solid transparent;
-    border-width: 1px 1px 1px 6px;
-    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
-    
-}
-
-
-.btn-actions button {
-    margin: 5px;
-    font-family: 'Lato-Light';
-}
-.btn-actions button:hover {
-
-   
-} */
-
-
-ul.note-list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(180px, 1fr));
-    /* Dynamic columns with minimum width of 200px */
-    /* Space between cards */
-    direction: ltr;
-    gap: 2em;
-    height: auto;
+.note-list {
+    width: 100%;
 
 }
 
-.note-list>li {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: auto;
-    /* Height adjusts based on content */
-    break-inside: avoid;
-    list-style: none;
-    padding: 10px;
-}
-.note-list > h2{
-    margin-inline-end: 5px;
-}
+.note-items {
+    width: 200px;
+    min-height: 104px;
 
-.note-content {
-    margin-block-end: 30px;
-}
-
-.note-list>* {
-    direction: ltr;
-    /* Ensure card content is still left-to-right */
-}
-
-.note-list li img {
-    max-width: 100%;
-
-    max-width: 60%;
-    /* Keeps aspect ratio of the image */
-    display: block;
-    /* Removes bottom space caused by inline elements */
-    border-radius: 5px;
-    /* Optional: add rounded corners to the image */
-}
-.btn-actions {
-    justify-content: flex-end;
     flex-wrap: wrap;
-    font-family: 'Lato-Light';
-    margin-bottom: 5px;
+    align-content: stretch;
+    margin: auto;
+    border-radius: 20px;
+    border: darkslategray;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+
 }
 
-.btn-actions button {
+.note-items img {
+    width: 100%;
 }
-
-.btn-actions button:hover {}

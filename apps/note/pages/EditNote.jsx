@@ -10,9 +10,6 @@ export function EditNote() {
     const navigate = useNavigate()
     const params = useParams()
 
-    console.log(params)
-
-
     useEffect(() => {
         if (params.noteId) loadNote()
     }, [])
@@ -24,11 +21,18 @@ export function EditNote() {
     }
 
     function handleChange({ target }) {
-        let value = target.value
-        let field = target.id
-        setNoteToEdit(prevNoteToEdit => ({ ...prevNoteToEdit, [field]: value }))
-    }
+        const { name, value } = target;  // Use `name` instead of `id` for simplicity
 
+        // Update state based on which field changed
+        if (name === 'title') {
+            setNoteToEdit(prevNote => ({ ...prevNote, title: value }));
+        } else if (name === 'txt') {
+            setNoteToEdit(prevNote => ({
+                ...prevNote,
+                info: { ...prevNote.info, txt: value }  // Update only the `txt` property inside `info`
+            }));
+        }
+    }
     function onSaveNote(ev) {
         ev.preventDefault()
         noteService.save(noteToEdit)
@@ -41,18 +45,49 @@ export function EditNote() {
                 console.log('err:', err)
             })
     }
-
-    const { title } = { noteToEdit }
-
-    return <section className="add-note-container">
-                <form onSubmit={onSaveNote}>
-                    <input onChange={handleChange} type="text" value={title} name="title" id="title" placeholder="Title" className="note-title-input" />
-                    <input onChange={handleChange} type="text" name="note" id="note" className="note-content-input" placeholder="Take a note..." />
-                     <div className="note-type-icons">
-                       <button className="add-note-button">Save </button>
-                     </div>
-                </form>
-          </section>
+    const { title, info: { txt = '' } = {} } = noteToEdit
 
 
+    return <section className="note-editor">
+    <div className="note-editor-container">
+      <form onSubmit={onSaveNote} className="note-form">
+        <input 
+          onChange={handleChange} 
+          type="text" 
+          value={title} 
+          name="title" 
+          id="title" 
+          placeholder="Title" 
+          className="note-input note-title" 
+        />
+        <input 
+          onChange={handleChange} 
+          type="text" 
+          value={txt} 
+          name="txt" 
+          id="txt" 
+          placeholder="Take a note..." 
+          className="note-input note-text" 
+        />
+        <button className="save">Save</button>
+        <div className="note-icons">
+          <span className="material-icons">image</span>
+          <span className="material-icons">brush</span>
+        </div>
+  
+        <div className="note-footer">
+          <div className="note-footer-icons">
+            <span className="material-icons">notifications</span>
+            <span className="material-icons">share</span>
+            <span className="material-icons">palette</span>
+            <span className="material-icons">image</span>
+            <span className="material-icons">more_vert</span>
+            <span className="material-icons">undo</span>
+            <span className="material-icons">redo</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  
 }
