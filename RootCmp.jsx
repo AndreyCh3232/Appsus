@@ -9,6 +9,8 @@ import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx";
 import { MailDetails } from "./apps/mail/cmps/MailDetails.jsx";
 import { EditNote } from "./apps/note/pages/EditNote.jsx"
 import {NoteFilter} from "./apps/note/cmps/NoteFilter.jsx"
+import { UserMsg } from "./cmps/UserMsg.jsx"
+
 
 
 export function App() {
@@ -26,6 +28,7 @@ export function App() {
                 <Route path="/note/edit/:noteId" element={<EditNote />} />
             </Routes>
             </section>
+            <UserMsg />
         </Router>
     )
 }
