@@ -1,6 +1,6 @@
 const { useCallback } = React
 
-export default function MailFolderList({ onSetFilter, onComposeMail, starredCount }) {
+export default function MailFolderList({ onSetFilter, onComposeMail, starredCount, inboxCount }) {
     const handleFilterChange = useCallback((folder) => {
         onSetFilter({ status: folder })
     }, [onSetFilter])
@@ -12,10 +12,10 @@ export default function MailFolderList({ onSetFilter, onComposeMail, starredCoun
             </button>
             <ul className="folders">
                 <li onClick={() => handleFilterChange('inbox')}>
-                    <i className="fas fa-inbox"></i> Inbox
+                    <i className="fas fa-inbox"></i> Inbox ({inboxCount})
                 </li>
 
-                <li onClick={() => handleFilterChange('stared')}>
+                <li onClick={() => handleFilterChange('starred')}>
                     <i className="fas fa-star"></i> Starred ({starredCount})
                 </li>
 

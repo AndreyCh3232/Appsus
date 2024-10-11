@@ -41,8 +41,15 @@ export const mailService = {
     save,
     update,
     toggleStar,
+    markAsReadUnread,
     getLoggedinUser,
     countStarredMails,
+    countInboxMails
+}
+
+function countInboxMails() {
+    const mails = _loadMails()
+    return mails.filter(mail => getMailStatus(mail) === 'inbox').length
 }
 
 function toggleStar(mailId) {
@@ -68,27 +75,22 @@ function _loadMails() {
 }
 
 function query(filterBy = {}) {
-    const mails = _loadMails()
+    let mails = _loadMails()
 
-    // if (filterBy.status) {
-    //     return Promise.resolve(
-    //         mails.filter(mail => getMailStatus(mail) === filterBy.status)
-    //     )
-    // }
-    // return Promise.resolve(mails)
     if (filterBy.status) {
         if (filterBy.status === 'starred') {
-            // Return only starred mails
-            return Promise.resolve(mails.filter(mail => mail.isStared))
+            mails = mails.filter(mail => mail.isStared)
+        } else {
+            mails = mails.filter(mail => getMailStatus(mail) === filterBy.status)
         }
-        return Promise.resolve(
-            mails.filter(mail => getMailStatus(mail) === filterBy.status)
-        )
+        if (filterBy.txt) {
+            mails = mails.filter(mail =>
+                mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase()) ||
+                mail.body.toLowerCase().includes(filterBy.txt.toLowerCase())
+            )
+        }
     }
-
-    // Return all mails if no status is provided
-    return Promise.resolve(mails);
-
+    return Promise.resolve(mails)
 }
 
 function getById(mailId) {
@@ -147,4 +149,15 @@ function getMailStatus(mail) {
     if (!mail.sentAt) return 'draft'
     if (mail.to === loggedinUser.email) return 'inbox'
     return 'sent'
+}
+
+function markAsReadUnread(mailId, isRead) {
+    const mails = _loadMails()
+    const mail = mails.find(mail => mail.id === mailId)
+    if (mail) {
+        mail.isRead = isRead
+        _saveMailsToStorage(mails)
+        return Promise.resolve(mail)
+    }
+    return Promise.reject('Mail not found')
 }

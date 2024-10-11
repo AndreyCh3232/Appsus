@@ -17,10 +17,12 @@ export function MailIndex() {
     const [isComposing, setIsComposing] = useState(false)
     const [sortBy, setSortBy] = useState({ sortBy: 'date', order: 'asc' })
     const [starredCount, setStarredCount] = useState(0)
+    const [inboxCount, setInboxCount] = useState(0)
 
     useEffect(() => {
         loadMails()
         setStarredCount(mailService.countStarredMails())
+        setInboxCount(mailService.countInboxMails())
     }, [filterBy, sortBy])
 
     function loadMails() {
@@ -60,7 +62,11 @@ export function MailIndex() {
 
     return (
         <section className="mail-index">
-            <MailFolderList onSetFilter={onSetFilter} onComposeMail={onComposeMail} starredCount={starredCount} />
+            <MailFolderList onSetFilter={onSetFilter}
+                onComposeMail={onComposeMail}
+                inboxCount={inboxCount}
+                starredCount={starredCount}
+            />
             <div className="mail-content">
                 <MailFilter onSetFilter={onSetFilter} onSetSort={onSetSort} />
                 <MailList mails={mails} onStar={handleStarToggle} />

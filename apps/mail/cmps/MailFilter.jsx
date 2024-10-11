@@ -4,12 +4,6 @@ export default function MailFilter({ onSetFilter, onSetSort }) {
         onSetFilter({ [name]: value })
     }
 
-    function handleSortChange(event) {
-        const { value } = event.target;
-        const [sortBy, order] = value.split('-');
-        onSetSort({ sortBy, order });
-    }
-
     return (
         <section className="mail-filter">
             <input type="text"
