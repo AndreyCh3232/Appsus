@@ -1,4 +1,9 @@
 .mail-list {
-    width: 100%;
-    background-color: #ffffff;
+    /* display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

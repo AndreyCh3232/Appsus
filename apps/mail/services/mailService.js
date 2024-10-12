@@ -44,7 +44,7 @@ export const mailService = {
     markAsReadUnread,
     getLoggedinUser,
     countStarredMails,
-    countInboxMails
+    countInboxMails,
 }
 
 function countInboxMails() {

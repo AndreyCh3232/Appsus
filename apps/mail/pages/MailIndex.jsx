@@ -18,6 +18,7 @@ export function MailIndex() {
     const [sortBy, setSortBy] = useState({ sortBy: 'date', order: 'asc' })
     const [starredCount, setStarredCount] = useState(0)
     const [inboxCount, setInboxCount] = useState(0)
+    const [selectedMailId, setSelectedMailId] = useState(null)
 
     useEffect(() => {
         loadMails()
@@ -60,16 +61,23 @@ export function MailIndex() {
         })
     }
 
+    function onMailSelect(mailId) {
+        setSelectedMailId(mailId)
+    }
+
     return (
         <section className="mail-index">
-            <MailFolderList onSetFilter={onSetFilter}
+            <MailFolderList
+                onSetFilter={onSetFilter}
                 onComposeMail={onComposeMail}
                 inboxCount={inboxCount}
                 starredCount={starredCount}
             />
             <div className="mail-content">
                 <MailFilter onSetFilter={onSetFilter} onSetSort={onSetSort} />
-                <MailList mails={mails} onStar={handleStarToggle} />
+                <MailList mails={mails} onStar={handleStarToggle}
+                    onMailSelect={onMailSelect}
+                    selectedMailId={selectedMailId} />
                 {isComposing && <MailCompose onMailSent={onMailSent} />}
             </div>
         </section>

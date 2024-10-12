@@ -1,5 +1,5 @@
 .mail-folder-list {
-    width: 280px;
+    /* width: 280px;
     background-color: #ffffff;
     border-right: 1px solid #e0e0e0;
     padding: 20px;
@@ -8,30 +8,43 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 100vh;
     position: sticky;
-    top: 0;
+    top: 0; */
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .folders {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 .folders li {
     display: flex;
     align-items: center;
-    padding: 10px;
+    gap: 10px;
+    padding: 12px;
     cursor: pointer;
+    border-radius: 8px;
     transition: background-color 0.3s ease;
-    font-size: 18px;
+    /* font-size: 18px; */
 }
 
 .folders li i {
-    margin-right: 10px;
+    /* margin-right: 10px;
     font-size: 20px;
-    color: #666;
+    color: #666; */
+    font-size: 1.2rem;
+    color: #333;
 }
 
 .folders li:hover {
-    background-color: #f1f1f1;
+    /* background-color: #f1f1f1; */
+    background-color: #e8f1fb;
+
 
 }

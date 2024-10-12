@@ -1,79 +1,88 @@
 .mail-details {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+
 }
 
-.mail-details h2 {
-    font-size: 2rem;
+.mail-details h4 {
+    font-size: 1.4rem;
     color: #333;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-.mail-details p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-    margin: 10px 0;
+.mail-details-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
 }
 
-.mail-details p:first-of-type {
-    margin-top: 0;
+.mail-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.mail-details .save-as-note-btn,
-.mail-details .back-btn {
-    padding: 10px 20px;
-    margin-top: 20px;
-    font-size: 16px;
+.action-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: none;
     border: none;
-    border-radius: 5px;
+    color: #666;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
+.action-btn:hover {
+    color: #007bff;
+    transform: scale(1.1);
+}
 
-.mail-details .save-as-note-btn {
-    background-color: #28a745;
-    color: #fff;
+/* Sender Information */
+.mail-sender-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.mail-sender-name {
+    font-weight: bold;
+    color: #333;
     margin-right: 10px;
 }
 
-.mail-details .save-as-note-btn:hover {
-    background-color: #218838;
+.mail-sender-email {
+    color: #999;
 }
 
-.mail-details .back-btn {
-    background-color: #007bff;
-    color: #fff;
+/* Body of the Mail */
+.mail-body {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
-.mail-details .back-btn:hover {
-    background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-    .mail-details {
-        padding: 15px;
-    }
-
-    .mail-details h2 {
-        font-size: 1.5rem;
-    }
-
-    .mail-details p {
-        font-size: 0.9rem;
-    }
-
-    .mail-details .save-as-note-btn,
-    .mail-details .back-btn {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
+/* Footer Section */
+.mail-footer {
+    font-size: 0.85rem;
+    color: #999;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
 }
