@@ -1,21 +1,30 @@
 .user-msg {
-    background-color: lightgray;
+    text-align: center;
+    font-size: 18px;
+    position: absolute;   
+    left: 50%;
+    top: 50%;
     padding: 1em;
-    position: absolute;
-    top: 1em;
-    right: 1em;
+    transform: translate(-50%, -50%);
+    background-color: lightgray;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    width: 250px;
+    height: 200px;
+   
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: CadetBlue;
 }
 
 .user-msg.error {
-    background-color: lightpink;
+    background-color: rgb(163, 76, 89);
 }
 
 
-.user-msg button{
+.user-msg button {
     float: right;
-    margin: 1em;
+    right: 0;
 }
