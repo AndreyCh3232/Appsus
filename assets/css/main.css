@@ -34,3 +34,6 @@
 @import './apps/mail/cmps/MailList.css';
 @import './apps/mail/cmps/MailDetails.css';
 @import './apps/mail/cmps/MailPreview.css';
+
+/* Mail Mobile vision*/
+@import './apps/mail/cmps/MailMobile.css';

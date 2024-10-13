@@ -9,12 +9,9 @@
     color: #fff;
 }
 
-.logo {
-    color: #ffb703;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.8rem;
-    letter-spacing: 1.2px;
+.logo-img {
+    max-height: 50px;
+    width: auto;
 }
 
 .wrapper {

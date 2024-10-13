@@ -94,19 +94,3 @@
 .mail-preview button {
     margin-left: 10px;
 }
-
-@media (max-width: 768px) {
-    .mail-preview {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .mail-preview a {
-        margin-right: 0;
-    }
-
-    .mail-preview button {
-        align-self: flex-end;
-        margin-top: 10px;
-    }
-}

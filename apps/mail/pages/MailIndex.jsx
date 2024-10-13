@@ -53,6 +53,7 @@ export function MailIndex() {
 
     function onMailSent() {
         setIsComposing(false)
+        onSetFilter()
         loadMails()
     }
 

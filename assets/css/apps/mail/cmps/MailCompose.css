@@ -4,13 +4,25 @@
     gap: 8px;
     padding: 10px;
     background-color: #007bff;
-    color: #fff;
+    color: black;
     font-weight: bold;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 15px;
+    position: relative;
+}
+
+.compose-btn::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
 }
 
 .compose-btn:hover {
@@ -132,25 +144,4 @@
 
 .save-draft-btn:hover {
     background-color: #e68900;
-}
-
-@media (max-width: 768px) {
-    .mail-filter {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
-    }
-
-    .mail-folder-list {
-        width: 100%;
-        align-items: center;
-    }
-
-    .mail-list {
-        grid-template-columns: 1fr;
-    }
-
-    .mail-compose {
-        width: 90%;
-    }
 }

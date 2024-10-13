@@ -2,7 +2,7 @@ import { mailService } from "../services/mailService.js";
 
 const { useState } = React
 
-export function MailCompose({ onMailSent }) {
+export function MailCompose({ onMailSent, onSetFilter }) {
     const [newMail, setNewMail] = useState({
         to: '',
         subject: '',
@@ -52,6 +52,7 @@ export function MailCompose({ onMailSent }) {
             sentAt: Date.now(),
         }).then(() => {
             onMailSent()
+            onSetFilter({ status: 'sent' })
         })
     }
 
@@ -71,6 +72,7 @@ export function MailCompose({ onMailSent }) {
 
     function handleDiscard() {
         onMailSent()
+        // onSetFilter({ status: 'sent' })
     }
 
     return (

@@ -10,6 +10,7 @@ body {
     background-color: #f5f8fb;
     color: #333;
     margin: 0;
+    overflow: hidden;
 }
 
 h1,

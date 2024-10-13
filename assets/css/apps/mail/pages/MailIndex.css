@@ -9,7 +9,8 @@
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
+
 }
 
 h1 {
@@ -29,6 +30,8 @@ h1 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .mail-filter input[type="text"] {
@@ -99,67 +102,4 @@ h1 {
     font-size: 0.85rem;
     flex: 1;
     text-align: right;
-}
-
-@media (max-width: 768px) {
-    .mail-index {
-        flex-direction: column;
-    }
-
-    .mail-folder-list {
-        width: 100%;
-        border-right: none;
-        padding: 10px;
-    }
-
-    .mail-content {
-        padding: 10px;
-    }
-
-    .mail-preview {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px;
-    }
-
-    .mail-preview p {
-        white-space: normal;
-        margin: 10px 0;
-    }
-
-    .mail-preview span {
-        text-align: left;
-        margin-top: 5px;
-    }
-
-    .mail-filter {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
-
-    .compose-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .mail-compose {
-        width: 90%;
-    }
-
-    .folders {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-
-    .folders li {
-        flex: 1 1 45%;
-        margin-bottom: 10px;
-        justify-content: center;
-    }
-
-    .folders li i {
-        font-size: 1.5rem;
-    }
 }

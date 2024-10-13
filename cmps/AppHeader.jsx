@@ -12,10 +12,9 @@ export function AppHeader() {
     }
 
     return (
-
         <header className="app-header">
             <Link to="/" className="logo">
-                <h3>LOGO!</h3>
+                <img src="/assets/img/telegram.png" alt="Logo" className="logo-img" />
             </Link>
             <input ref={menuToggleRef}
                 type="checkbox"
