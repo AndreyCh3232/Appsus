@@ -3,21 +3,6 @@
 
 }
 
-.note-items {
-    width: 200px;
-    min-height: 104px;
-
-    flex-wrap: wrap;
-    align-content: stretch;
-    margin: auto;
-    border-radius: 20px;
-    border: darkslategray;
-
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-
-}
-
 .note-items img {
     width: 100%;
 }
