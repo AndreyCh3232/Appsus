@@ -8,6 +8,11 @@ export default function MailFilter({ onSetFilter, onSetSort }) {
         onSetFilter({ isStarred: event.target.checked });
     }
 
+    function handleSortChange(event) {
+        const { value } = event.target
+        onSetSort(value)
+    }
+
     return (
         <section className="mail-filter">
             <input type="text"
@@ -33,7 +38,7 @@ export default function MailFilter({ onSetFilter, onSetSort }) {
                 </label>
             </div>
 
-            <select name="sort" onChange={handleFilterChange}>
+            <select name="sort" onChange={handleSortChange}>
                 <option value="date-asc">Date (Ascending)</option>
                 <option value="date-desc">Date (Descending)</option>
                 <option value="title-asc">Title (Ascending)</option>

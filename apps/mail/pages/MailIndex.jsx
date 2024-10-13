@@ -34,7 +34,7 @@ export function MailIndex() {
 
     function loadMails() {
         mailService.query(filterBy).then((loadedMails) => {
-            console.log('Loaded Mails:', loadedMails)
+            const sortedMails = sortMails(loadedMails)
             setMails(loadedMails)
         })
     }
@@ -43,8 +43,8 @@ export function MailIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...newFilter }))
     }
 
-    function onSetSort(newSort) {
-        setSortBy(prevSort => ({ ...prevSort, ...newSort }))
+    function onSetSort(sortCriteria) {
+        setSortBy(sortCriteria)
     }
 
     function onComposeMail() {
@@ -67,6 +67,21 @@ export function MailIndex() {
         })
     }
 
+    function sortMails(mails) {
+        return mails.sort((a, b) => {
+            if (sortBy === 'date-asc') {
+                return a.createdAt - b.createdAt
+            } else if (sortBy === 'date-desc') {
+                return b.createdAt - a.createdAt
+            } else if (sortBy === 'title-asc') {
+                return a.subject.localeCompare(b.subject)
+            } else if (sortBy === 'title-desc') {
+                return b.subject.localeCompare(a.subject)
+            }
+            return 0
+        })
+    }
+
     function onMailSelect(mailId) {
         setSelectedMailId(mailId)
     }
@@ -83,10 +98,16 @@ export function MailIndex() {
                 draftCount={draftCount}
             />
             <div className="mail-content">
-                <MailFilter onSetFilter={onSetFilter} onSetSort={onSetSort} />
-                <MailList mails={mails} onStar={handleStarToggle}
+                <MailFilter
+                    onSetFilter={onSetFilter}
+                    onSetSort={onSetSort}
+                />
+                <MailList
+                    mails={mails}
+                    onStar={handleStarToggle}
                     onMailSelect={onMailSelect}
-                    selectedMailId={selectedMailId} />
+                    selectedMailId={selectedMailId}
+                />
                 {isComposing && <MailCompose onMailSent={onMailSent} />}
             </div>
         </section>
