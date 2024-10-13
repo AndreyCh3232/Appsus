@@ -27,6 +27,45 @@ const defaultMails = [
         labels: ['work'],
         isStared: true,
     },
+    {
+        id: 'e103',
+        createdAt: 1651133930500,
+        subject: 'Your subscription is about to expire',
+        body: 'Please renew your subscription to continue enjoying our service.',
+        isRead: false,
+        sentAt: 1651133930594,
+        removedAt: null,
+        from: 'service@streaming.com',
+        to: 'user@appsus.com',
+        labels: ['subscription'],
+        isStared: false,
+    },
+    {
+        id: 'e104',
+        createdAt: 1551233930500,
+        subject: 'Vacation Plans',
+        body: 'Let\'s finalize the dates and destinations for our vacation.',
+        isRead: false,
+        sentAt: 1551233930594,
+        removedAt: null,
+        from: 'alex@travel.com',
+        to: 'user@appsus.com',
+        labels: ['personal'],
+        isStared: false,
+    },
+    {
+        id: 'e105',
+        createdAt: 1551333930500,
+        subject: 'Invoice for March',
+        body: 'Attached is your invoice for the month of March. Please review it and let us know if you have any questions.',
+        isRead: true,
+        sentAt: 1551333930594,
+        removedAt: null,
+        from: 'billing@company.com',
+        to: 'user@appsus.com',
+        labels: ['finance'],
+        isStared: false,
+    },
 ]
 
 const loggedinUser = {
@@ -45,6 +84,24 @@ export const mailService = {
     getLoggedinUser,
     countStarredMails,
     countInboxMails,
+    countSentMails,
+    countTrashMails,
+    countDraftMails,
+}
+
+function countSentMails() {
+    const mails = _loadMails()
+    return mails.filter(mail => getMailStatus(mail) === 'sent').length
+}
+
+function countTrashMails() {
+    const mails = _loadMails()
+    return mails.filter(mail => getMailStatus(mail) === 'trash').length
+}
+
+function countDraftMails() {
+    const mails = _loadMails()
+    return mails.filter(mail => getMailStatus(mail) === 'draft').length
 }
 
 function countInboxMails() {
@@ -90,6 +147,7 @@ function query(filterBy = {}) {
             )
         }
     }
+
     return Promise.resolve(mails)
 }
 
@@ -99,7 +157,7 @@ function getById(mailId) {
 }
 
 function remove(mailId) {
-    var mails = _loadMails()
+    let mails = _loadMails()
     mails = mails.filter((mail) => mail.id !== mailId)
     _saveMailsToStorage(mails)
     return Promise.resolve()

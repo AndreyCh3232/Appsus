@@ -8,6 +8,7 @@ export function MailCompose({ onMailSent }) {
         subject: '',
         body: '',
     })
+    const [errors, setErrors] = useState({})
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -17,21 +18,41 @@ export function MailCompose({ onMailSent }) {
         }))
     }
 
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return emailRegex.test(email);
+    }
+
     function handleSend() {
-        if (newMail.to && newMail.subject && newMail.body) {
-            mailService.save({
-                ...newMail,
-                isRead: false,
-                isStared: false,
-                labels: [],
-                from: "user@appsus.com",
-                sentAt: Date.now(),
-            }).then(() => {
-                onMailSent()
-            })
-        } else {
-            alert("Please fill out all fields before sending.")
+        const newErrors = {}
+
+        if (!newMail.to || !validateEmail(newMail.to)) {
+            newErrors.to = "Please enter a valid email address."
         }
+
+        if (!newMail.subject) {
+            newErrors.subject = "Subject is required."
+        }
+
+        if (!newMail.body) {
+            newErrors.body = "Body is required."
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors)
+            return
+        }
+
+        mailService.save({
+            ...newMail,
+            isRead: false,
+            isStared: false,
+            labels: [],
+            from: "user@appsus.com",
+            sentAt: Date.now(),
+        }).then(() => {
+            onMailSent()
+        })
     }
 
     function handleDiscard() {
@@ -46,6 +67,7 @@ export function MailCompose({ onMailSent }) {
                     <i className="fas fa-times"></i>
                 </button>
             </div>
+
             <input
                 type="email"
                 name="to"
@@ -54,6 +76,9 @@ export function MailCompose({ onMailSent }) {
                 onChange={handleChange}
                 required
             />
+            {errors.to && <p className="error">{errors.to}</p>}
+
+
             <input
                 type="text"
                 name="subject"
@@ -62,6 +87,9 @@ export function MailCompose({ onMailSent }) {
                 onChange={handleChange}
                 required
             />
+            {errors.subject && <p className="error">{errors.subject}</p>}
+
+
             <textarea
                 name="body"
                 placeholder="Message body..."
@@ -69,6 +97,8 @@ export function MailCompose({ onMailSent }) {
                 onChange={handleChange}
                 required
             />
+            {errors.body && <p className="error">{errors.body}</p>}
+
             <div className="compose-actions">
                 <button onClick={handleSend} className="send-btn">
                     <i className="fas fa-paper-plane"></i> Send
