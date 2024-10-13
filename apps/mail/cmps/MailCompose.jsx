@@ -55,6 +55,20 @@ export function MailCompose({ onMailSent }) {
         })
     }
 
+    function handleSaveDraft() {
+        mailService.saveDraft({
+            ...newMail,
+            isRead: false,
+            isStared: false,
+            labels: ['draft'],
+            from: "user@appsus.com",
+            sentAt: null,
+        }).then(() => {
+            alert("Draft saved!")
+            onMailSent()
+        })
+    }
+
     function handleDiscard() {
         onMailSent()
     }
@@ -105,6 +119,9 @@ export function MailCompose({ onMailSent }) {
                 </button>
                 <button onClick={handleDiscard} className="discard-btn">
                     <i className="fas fa-trash"></i> Discard
+                </button>
+                <button onClick={handleSaveDraft} className="save-draft-btn">
+                    <i className="fas fa-save"></i> Save Draft
                 </button>
             </div>
         </section>

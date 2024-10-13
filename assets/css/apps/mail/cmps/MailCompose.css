@@ -115,6 +115,25 @@
     margin-top: 5px;
 }
 
+.save-draft-btn {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-draft-btn:hover {
+    background-color: #e68900;
+}
+
 @media (max-width: 768px) {
     .mail-filter {
         flex-direction: column;

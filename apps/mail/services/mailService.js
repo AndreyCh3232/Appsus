@@ -80,6 +80,7 @@ export const mailService = {
     save,
     update,
     toggleStar,
+    saveDraft,
     markAsReadUnread,
     getLoggedinUser,
     countStarredMails,
@@ -218,4 +219,19 @@ function markAsReadUnread(mailId, isRead) {
         return Promise.resolve(mail)
     }
     return Promise.reject('Mail not found')
+}
+
+function saveDraft(draftMail) {
+    const mails = _loadMails()
+    if (draftMail.id) {
+        const idx = mails.findIndex((m) => m.id === draftMail.id)
+        mails[idx] = draftMail;
+    } else {
+        draftMail.id = makeId()
+        draftMail.createdAt = Date.now()
+        draftMail.sentAt = null
+        mails.push(draftMail)
+    }
+    _saveMailsToStorage(mails)
+    return Promise.resolve(draftMail)
 }

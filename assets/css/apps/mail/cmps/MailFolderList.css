@@ -1,14 +1,4 @@
 .mail-folder-list {
-    /* width: 280px;
-    background-color: #ffffff;
-    border-right: 1px solid #e0e0e0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 100vh;
-    position: sticky;
-    top: 0; */
     width: 250px;
     background-color: #ffffff;
     border-right: 1px solid #e0e0e0;
@@ -31,19 +21,14 @@
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s ease;
-    /* font-size: 18px; */
 }
 
 .folders li i {
-    /* margin-right: 10px;
-    font-size: 20px;
-    color: #666; */
     font-size: 1.2rem;
     color: #333;
 }
 
 .folders li:hover {
-    /* background-color: #f1f1f1; */
     background-color: #e8f1fb;
 
 

@@ -1,25 +1,43 @@
 .mail-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 0 auto;
+    margin-top: 15px;
+    padding: 20px;
     background-color: #ffffff;
-    padding: 30px;
-    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
 }
 
 .mail-details h4 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #333;
-    margin-bottom: 15px;
-    text-align: center;
+    margin-bottom: 10px;
 }
+
+.mail-details p {
+    font-size: 0.9rem;
+    color: #444;
+    margin: 5px 0;
+}
+
+.mail-details .action-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.mail-details .action-btn:hover {
+    color: #007bff;
+    transform: scale(1.2);
+}
+
+.mail-details .action-btn i {
+    pointer-events: none;
+}
+
 
 .mail-details-header h2 {
     font-size: 1.5rem;
@@ -27,32 +45,6 @@
     margin: 0;
 }
 
-.mail-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.action-icons {
-    display: flex;
-    gap: 10px;
-}
-
-.action-btn {
-    background: none;
-    border: none;
-    color: #666;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.action-btn:hover {
-    color: #007bff;
-    transform: scale(1.1);
-}
-
-/* Sender Information */
 .mail-sender-info {
     display: flex;
     align-items: center;
@@ -71,7 +63,6 @@
     color: #999;
 }
 
-/* Body of the Mail */
 .mail-body {
     font-size: 1rem;
     color: #444;
@@ -79,7 +70,6 @@
     margin-bottom: 20px;
 }
 
-/* Footer Section */
 .mail-footer {
     font-size: 0.85rem;
     color: #999;
